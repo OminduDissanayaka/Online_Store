@@ -1,0 +1,24 @@
+.color1 {
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+}
+
+.nav-link {
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    
+}
+
+canvas {
+    max-width: 100%;
+    height: 400px;
+}
+
+.btn-color{
+    background-color: #6e8efb;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+.btn-color:hover{
+    background-color: #a777e3;
+}
