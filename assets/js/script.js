@@ -53,59 +53,59 @@ function adminsignin() {
 /** Product */
 
 // Add Brand
-function addBrand(){
-   var brandName = document.getElementById("brandName").value;
-  
-   var form = new FormData();
+function addBrand() {
+    var brandName = document.getElementById("brandName").value;
 
-   form.append("brandName", brandName);
+    var form = new FormData();
 
-   var xhr = new XMLHttpRequest();
+    form.append("brandName", brandName);
 
-   xhr.onreadystatechange = function() {
-    if(xhr.readyState == 4 && xhr.status == 200){
-        var response = xhr.responseText;
-        if (response == "Success") {
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Brand Name Added Successfully",
-                showConfirmButton: false,
-                timer: 1500
-            }).then(() => {
-                setTimeout(() => {
-                    window.location.reload();
-                }, 50);
-            })
-        } else {
-            Swal.fire({
-                position: "center",
-                icon: "error",
-                title: "Oops...",
-                text: (response),
-                showConfirmButton: false,
-                timer: 1500
-            });
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var response = xhr.responseText;
+            if (response == "Success") {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Brand Name Added Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(() => {
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 50);
+                })
+            } else {
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Oops...",
+                    text: (response),
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
         }
     }
-   }
-   xhr.open("POST", "addBrandProcess.php", true);
-   xhr.send(form);
+    xhr.open("POST", "addBrandProcess.php", true);
+    xhr.send(form);
 }
 
 // Add Category
 
-function addCategory(){
+function addCategory() {
     var categoryName = document.getElementById("categoryName").value;
-    
+
     var form = new FormData();
 
     form.append("categoryName", categoryName);
 
     var xhr = new XMLHttpRequest();
 
-    xhr.onreadystatechange = function() {
-        if(xhr.readyState == 4 && xhr.status == 200){
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
             var response = xhr.responseText;
             if (response == "Success") {
                 Swal.fire({
@@ -138,17 +138,17 @@ function addCategory(){
 
 // Add Color
 
-function addColor(){
+function addColor() {
     var colorName = document.getElementById("colorName").value;
-    
+
     var form = new FormData();
 
     form.append("colorName", colorName);
 
     var xhr = new XMLHttpRequest();
 
-    xhr.onreadystatechange = function() {
-        if(xhr.readyState == 4 && xhr.status == 200){
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
             var response = xhr.responseText;
             if (response == "Success") {
                 Swal.fire({
@@ -180,17 +180,17 @@ function addColor(){
 
 // Add Size
 
-function addSize(){
+function addSize() {
     var sizeName = document.getElementById("sizeName").value;
-    
+
     var form = new FormData();
 
     form.append("sizeName", sizeName);
 
     var xhr = new XMLHttpRequest();
 
-    xhr.onreadystatechange = function(){
-        if(xhr.readyState == 4 && xhr.status == 200){
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
             var response = xhr.responseText;
             if (response == "Success") {
                 Swal.fire({
@@ -216,14 +216,14 @@ function addSize(){
             }
         }
     }
-    
+
     xhr.open("POST", "addSizeProcess.php", true);
     xhr.send(form);
 }
 
 // Add Product
 
-function addProduct(){
+function addProduct() {
     var pname = document.getElementById("pname").value;
     var desc = document.getElementById("desc").value;
     var brand = document.getElementById("brand").value;
@@ -237,7 +237,7 @@ function addProduct(){
     var img2 = document.getElementById("img2").files[0];
     var img3 = document.getElementById("img3").files[0];
 
-    if(!pname || !desc || !brand || !category || !color || !size){
+    if (!pname || !desc || !brand || !category || !color || !size) {
         Swal.fire({
             position: "center",
             icon: "warning",
@@ -246,4 +246,49 @@ function addProduct(){
         });
         return;
     }
+
+    var form = new FormData();
+
+    form.append("pname", pname);
+    form.append("desc", desc);
+    form.append("brand", brand);
+    form.append("category", category);
+    form.append("color", color);
+    form.append("size", size);
+
+    form.append("img1", img1);
+    form.append("img2", img2);
+    form.append("img3", img3);
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var response = xhr.responseText;
+            if (response == "Success") {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Product Added Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(() => {
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 50);
+                })
+            } else {
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Oops...",
+                    text: (response),
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+    }
+    xhr.open("POST", "addProductProcess.php", true);
+    xhr.send(form);
 }
